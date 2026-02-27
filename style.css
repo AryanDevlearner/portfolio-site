@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #60A5FA; /* Blue 400 */
+    --secondary-color: #38BDF8; /* Cyan 400 */
+    --bg-gradient-start: #020817;
+    --bg-gradient-end: #0B1D3A;
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(96, 165, 250, 0.2);
+    --text-color: #E2E8F0;
+}
+
+body {
+    background: linear-gradient(-45deg, #020817, #0B1D3A, #1e3a8a, #0f172a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Dynamic Background Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* refined Glass Effect */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Hover Effects */
+.glass-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(56, 189, 248, 0.2); /* Cyan glow */
+    border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* Interactive Contact Buttons */
+.contact-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.contact-btn:hover {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: var(--secondary-color) !important;
+    padding-left: 1rem; /* Subtle horizontal shift */
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.contact-btn:active {
+    transform: scale(0.96) translateY(2px);
+    background: rgba(56, 189, 248, 0.25) !important;
+    transition: all 0.1s ease !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #020817; 
+}
+::-webkit-scrollbar-thumb {
+    background: #1e3a8a; 
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #38BDF8; 
+}
+
+/* Utility Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delay for grid items */
+.stagger-1 { transition-delay: 100ms; }
+.stagger-2 { transition-delay: 200ms; }
+.stagger-3 { transition-delay: 300ms; }
+.stagger-4 { transition-delay: 400ms; }
+.stagger-5 { transition-delay: 500ms; }
+
+/* Navbar Active Link */
+.nav-link {
+    position: relative;
+    padding-bottom: 2px;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Profile Picture Float */
+.float-img {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Typing Cursor */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
